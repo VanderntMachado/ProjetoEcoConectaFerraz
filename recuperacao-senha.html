@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Recupera&ccedil;&atilde;o de Senha | Eco-Conecta
+  </title>
+  <link href="CSS/style.css" rel="stylesheet"/>
+ </head>
+ <body class="internal-page">
+  <header class="topbar">
+   <a class="logo" href="index.html">
+    <span class="logo-mark">
+     🍃
+    </span>
+    Eco-Conecta Ferraz
+   </a>
+   <a class="btn outline" href="cadastro.html">
+    &larr; Voltar para o login
+   </a>
+  </header>
+  <main class="authshell">
+   <section class="authcard">
+    <div class="authart">
+     <div>
+      <span class="eyebrow" style="color:#b4f1db">
+       ACESSO SEGURO
+      </span>
+      <h1>
+       Vamos ajudar voc&ecirc; a recuperar o acesso.
+      </h1>
+     </div>
+     <p>
+      Informe o e-mail ou CPF vinculado &agrave; sua conta para receber as instru&ccedil;&otilde;es.
+     </p>
+     <div class="bigicon">
+      🔐
+     </div>
+    </div>
+    <div class="authform">
+     <span class="eyebrow">
+      RECUPERA&Ccedil;&Atilde;O DE CONTA
+     </span>
+     <h2>
+      Recuperar senha
+     </h2>
+     <p>
+      Informe seus dados e siga as instru&ccedil;&otilde;es de recupera&ccedil;&atilde;o.
+     </p>
+     <form id="form">
+      <label for="account">
+       E-mail ou CPF
+      </label>
+      <input id="account" placeholder="seu@email.com ou CPF" required=""/>
+      <button class="btn primary" type="submit">
+       Enviar instru&ccedil;&otilde;es
+      </button>
+     </form>
+     <div class="success" id="success">
+      Solicita&ccedil;&atilde;o demonstrativa registrada. Com o backend integrado, esta etapa poder&aacute; enviar o e-mail de recupera&ccedil;&atilde;o.
+     </div>
+     <a class="backlink" href="cadastro.html">
+      Voltar para o login
+     </a>
+     <p class="muted small" style="margin-top:14px">
+      Esta tela de prot&oacute;tipo n&atilde;o envia e-mails nem altera senhas.
+     </p>
+    </div>
+   </section>
+  </main>
+  <script>
+   document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();document.getElementById('success').classList.add('show')})
+  </script>
+ </body>
+</html>

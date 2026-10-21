@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Transpar&ecirc;ncia P&uacute;blica | Eco-Conecta
+  </title>
+  <link href="CSS/style.css" rel="stylesheet"/>
+ </head>
+ <body class="internal-page">
+  <header class="topbar">
+   <a class="logo" href="index.html">
+    <span class="logo-mark">
+     🍃
+    </span>
+    Eco-Conecta Ferraz
+   </a>
+   <nav class="nav">
+    <a href="index.html">
+     In&iacute;cio
+    </a>
+    <a href="index.html#como-funciona">
+     Como funciona
+    </a>
+    <a href="index.html#residuos">
+     Res&iacute;duos
+    </a>
+    <a href="transparencia.html">
+     Transpar&ecirc;ncia
+    </a>
+   </nav>
+   <a class="btn primary" href="cadastro.html">
+    Solicitar coleta
+   </a>
+  </header>
+  <main class="page">
+   <div class="heading">
+    <div>
+     <span class="eyebrow">
+      DADOS ABERTOS &bull; CONTROLE SOCIAL
+     </span>
+     <h1>
+      Transpar&ecirc;ncia P&uacute;blica
+     </h1>
+     <p class="muted">
+      Acompanhe os dados das coletas, destina&ccedil;&otilde;es e resultados do projeto em Ferraz de Vasconcelos.
+     </p>
+    </div>
+    <button class="btn outline" onclick="print()">
+     Imprimir relat&oacute;rio
+    </button>
+   </div>
+   <section class="stats">
+    <article class="stat">
+     <div class="stat-icon">
+      ♻
+     </div>
+     <div>
+      <span>
+       Res&iacute;duos coletados
+      </span>
+      <strong>
+       0
+      </strong>
+      <span>
+       registros demonstrativos
+      </span>
+     </div>
+    </article>
+    <article class="stat">
+     <div class="stat-icon">
+      🧱
+     </div>
+     <div>
+      <span>
+       Volume destinado
+      </span>
+      <strong>
+       0 kg
+      </strong>
+      <span>
+       dados de exemplo
+      </span>
+     </div>
+    </article>
+    <article class="stat">
+     <div class="stat-icon">
+      📍
+     </div>
+     <div>
+      <span>
+       Pontos de coleta
+      </span>
+      <strong>
+       0
+      </strong>
+      <span>
+       locais cadastrados
+      </span>
+     </div>
+    </article>
+    <article class="stat">
+     <div class="stat-icon">
+      🚛
+     </div>
+     <div>
+      <span>
+       Coletores ativos
+      </span>
+      <strong>
+       0
+      </strong>
+      <span>
+       perfis demonstrativos
+      </span>
+     </div>
+    </article>
+   </section>
+   <div class="tabs">
+    <button class="tab active">
+     Coletas realizadas
+    </button>
+    <button class="tab">
+     Destina&ccedil;&otilde;es
+    </button>
+    <button class="tab">
+     Coletores
+    </button>
+    <button class="tab">
+     Relat&oacute;rios
+    </button>
+   </div>
+   <section class="table-panel">
+    <div class="filters">
+     <select id="tipo">
+      <option value="all">
+       Todos os res&iacute;duos
+      </option>
+      <option>
+       Entulho
+      </option>
+      <option>
+       M&oacute;veis
+      </option>
+      <option>
+       Podas e galhos
+      </option>
+      <option>
+       Madeira
+      </option>
+     </select>
+     <select id="st">
+      <option value="all">
+       Todos os status
+      </option>
+      <option>
+       Destinada
+      </option>
+      <option>
+       Em transporte
+      </option>
+      <option>
+       Em an&aacute;lise
+      </option>
+     </select>
+     <input id="q" placeholder="Buscar endere&ccedil;o, coletor ou tipo..."/>
+    </div>
+    <div class="table-wrap">
+     <table>
+      <thead>
+       <tr>
+        <th>
+         Data
+        </th>
+        <th>
+         Tipo de res&iacute;duo
+        </th>
+        <th>
+         Quantidade
+        </th>
+        <th>
+         Local da coleta
+        </th>
+        <th>
+         Coletor
+        </th>
+        <th>
+         Status
+        </th>
+       </tr>
+      </thead>
+      <tbody id="rows">
+       <tr class="empty-row">
+        <td colspan="6" style="text-align:center;padding:30px">
+         Nenhuma coleta cadastrada.
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+    <div class="pagination">
+     <span id="count">
+      Exibindo 0 registros
+     </span>
+     <span>
+      Dados ilustrativos
+     </span>
+    </div>
+   </section>
+   <p class="notice">
+    Aten&ccedil;&atilde;o: n&uacute;meros e registros s&atilde;o fict&iacute;cios e servem somente para demonstrar a interface. Conecte ao banco de dados antes de publicar como informa&ccedil;&atilde;o oficial.
+   </p>
+  </main>
+  <script>
+   function filtrar(){let n=0;document.querySelectorAll('#rows tr:not(.empty-row)').forEach(r=>{let ok=(document.getElementById('q').value===''||r.innerText.toLowerCase().includes(document.getElementById('q').value.toLowerCase()))&&(document.getElementById('tipo').value==='all'||r.dataset.t===document.getElementById('tipo').value)&&(document.getElementById('st').value==='all'||r.dataset.s===document.getElementById('st').value);r.hidden=!ok;if(ok)n++});let empty=document.querySelector('#rows .empty-row');if(empty)empty.hidden=n>0;document.getElementById('count').textContent='Exibindo '+n+' registro(s)'}['q','tipo','st'].forEach(id=>document.getElementById(id).addEventListener('input',filtrar));
+  </script>
+ </body>
+</html>

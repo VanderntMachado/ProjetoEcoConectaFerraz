@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Baixa de Carga | PortalGestora
+  </title>
+  <link href="CSS/style.css" rel="stylesheet"/>
+ </head>
+ <body class="internal-page">
+  <header class="topbar">
+   <a class="logo" href="index.html">
+    <span class="logo-mark">
+     🍃
+    </span>
+    Eco-Conecta Ferraz
+   </a>
+   <span class="muted small">
+    Portal da Gestora
+   </span>
+   <a class="btn outline" href="index.html">
+    Sair / In&iacute;cio
+   </a>
+  </header>
+  <div class="dashboard">
+   <aside class="sidebar">
+    <div class="side-brand">
+     🍃 Eco-Conecta Ferraz
+    </div>
+    <a class="side-link" href="gestora-coletores.html">
+     ♙ Coletores
+    </a>
+    <a class="side-link active" href="gestora-baixa-carga.html">
+     ▤ Baixa de Carga
+    </a>
+    <a class="side-link" href="gestora-token.html">
+     ▣ Emiss&atilde;o de Token
+    </a>
+    <a class="side-link" href="transparencia.html">
+     ▥ Relat&oacute;rios
+    </a>
+   </aside>
+   <main class="dashmain">
+    <div class="dashhead">
+     <div>
+      <span class="eyebrow">
+       CONTROLE DE DESTINA&Ccedil;&Atilde;O
+      </span>
+      <h1>
+       Baixa de Carga
+      </h1>
+      <p class="muted small">
+       Registre a conclus&atilde;o da opera&ccedil;&atilde;o e atualize o status da carga.
+      </p>
+     </div>
+     <button class="btn primary" id="new">
+      + Nova Baixa
+     </button>
+    </div>
+    <section class="stats">
+     <article class="stat">
+      <div class="stat-icon">
+       ▤
+      </div>
+      <div>
+       <span>
+        Cargas registradas
+       </span>
+       <strong id="total">
+        0
+       </strong>
+      </div>
+     </article>
+     <article class="stat">
+      <div class="stat-icon">
+       &checkmark;
+      </div>
+      <div>
+       <span>
+        Conclu&iacute;das
+       </span>
+       <strong id="done">
+        0
+       </strong>
+      </div>
+     </article>
+     <article class="stat">
+      <div class="stat-icon">
+       🚛
+      </div>
+      <div>
+       <span>
+        Em transporte
+       </span>
+       <strong>
+        0
+       </strong>
+      </div>
+     </article>
+     <article class="stat">
+      <div class="stat-icon">
+       ◷
+      </div>
+      <div>
+       <span>
+        Pendentes
+       </span>
+       <strong>
+        0
+       </strong>
+      </div>
+     </article>
+    </section>
+    <section class="table-panel">
+     <div class="filters">
+      <input id="q" placeholder="Buscar token, coletor ou res&iacute;duo..."/>
+      <select id="status">
+       <option value="all">
+        Todos os status
+       </option>
+       <option>
+        Conclu&iacute;da
+       </option>
+       <option>
+        Em transporte
+       </option>
+       <option>
+        Pendente
+       </option>
+      </select>
+     </div>
+     <div class="table-wrap">
+      <table>
+       <thead>
+        <tr>
+         <th>
+          Token
+         </th>
+         <th>
+          Coletor
+         </th>
+         <th>
+          Tipo de res&iacute;duo
+         </th>
+         <th>
+          Qtd.
+         </th>
+         <th>
+          Data
+         </th>
+         <th>
+          Status
+         </th>
+         <th>
+          A&ccedil;&otilde;es
+         </th>
+        </tr>
+       </thead>
+       <tbody id="rows">
+        <tr class="empty-row">
+         <td colspan="7" style="text-align:center;padding:30px">
+          Nenhuma carga cadastrada.
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <div class="pagination">
+      <span id="count">
+       Exibindo 0 cargas
+      </span>
+      <span>
+       Dados fict&iacute;cios para prot&oacute;tipo
+      </span>
+     </div>
+    </section>
+    <p class="notice">
+     A baixa altera o status apenas nesta p&aacute;gina de demonstra&ccedil;&atilde;o. Para persistir os dados, ser&aacute; necess&aacute;ria integra&ccedil;&atilde;o com backend.
+    </p>
+   </main>
+  </div>
+  <script>
+   function filter(){let n=0;document.querySelectorAll('#rows tr:not(.empty-row)').forEach(r=>{let ok=r.innerText.toLowerCase().includes(document.getElementById('q').value.toLowerCase())&&(document.getElementById('status').value==='all'||r.innerText.includes(document.getElementById('status').value));r.hidden=!ok;if(ok)n++});document.getElementById('count').textContent='Exibindo '+n+' carga(s')}document.getElementById('q').addEventListener('input',filter);document.getElementById('status').addEventListener('change',filter);document.getElementById('rows').addEventListener('click',e=>{let b=e.target.closest('.finish');if(!b)return;let r=b.closest('tr'),cell=r.cells[5];if(cell.innerText.includes('Concluída')){alert('Esta carga já está concluída.');return}if(confirm('Confirmar a baixa desta carga?')){cell.innerHTML='<span class="status">Concluída</span>';b.textContent='Ver';document.getElementById('done').textContent=+document.getElementById('done').textContent+1;filter()}});document.getElementById('new').onclick=()=>{let t=prompt('Token da carga:');if(!t)return;let c=prompt('Nome do coletor:');if(!c)return;let r=prompt('Tipo de resíduo:');if(!r)return;let tr=document.createElement('tr');[t,c,r,prompt('Quantidade:','1 carga')||'1 carga',new Date().toLocaleDateString('pt-BR')].forEach(v=>{let td=document.createElement('td');td.textContent=v;tr.append(td)});let st=document.createElement('td');st.innerHTML='<span class="status warn">Pendente</span>';tr.append(st);let act=document.createElement('td');act.innerHTML='<button class="btn outline finish">Dar baixa</button>';tr.append(act);let empty=document.querySelector('#rows .empty-row');if(empty)empty.remove();document.getElementById('rows').prepend(tr);document.getElementById('total').textContent=+document.getElementById('total').textContent+1;filter()};
+  </script>
+ </body>
+</html>
