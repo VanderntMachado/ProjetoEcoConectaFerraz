@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   Coletores | PortalGestora
+  </title>
+  <link href="CSS/style.css" rel="stylesheet"/>
+ </head>
+ <body class="internal-page">
+  <header class="topbar">
+   <a class="logo" href="index.html">
+    <span class="logo-mark">
+     🍃
+    </span>
+    Eco-Conecta Ferraz
+   </a>
+   <span class="muted small">
+    Portal da Gestora
+   </span>
+   <a class="btn outline" href="index.html">
+    Sair / In&iacute;cio
+   </a>
+  </header>
+  <div class="dashboard">
+   <aside class="sidebar">
+    <div class="side-brand">
+     🍃 Eco-Conecta Ferraz
+    </div>
+    <a class="side-link active" href="gestora-coletores.html">
+     ♙ Coletores
+    </a>
+    <a class="side-link" href="gestora-baixa-carga.html">
+     ▤ Baixa de Carga
+    </a>
+    <a class="side-link" href="gestora-token.html">
+     ▣ Emiss&atilde;o de Token
+    </a>
+    <a class="side-link" href="transparencia.html">
+     ▥ Relat&oacute;rios
+    </a>
+    <div class="side-bottom">
+     ● Gestora
+     <br/>
+     &Aacute;rea administrativa demonstrativa
+    </div>
+   </aside>
+   <main class="dashmain">
+    <div class="dashhead">
+     <div>
+      <span class="eyebrow">
+       PORTAL ADMINISTRATIVO
+      </span>
+      <h1>
+       Coletores
+      </h1>
+      <p class="muted small">
+       Gerencie os coletores cadastrados na plataforma.
+      </p>
+     </div>
+     <button class="btn primary" id="new">
+      + Novo Coletor
+     </button>
+    </div>
+    <section class="stats">
+     <article class="stat">
+      <div class="stat-icon">
+       ♙
+      </div>
+      <div>
+       <span>
+        Cadastrados
+       </span>
+       <strong>
+        0
+       </strong>
+      </div>
+     </article>
+     <article class="stat">
+      <div class="stat-icon">
+       &checkmark;
+      </div>
+      <div>
+       <span>
+        Ativos
+       </span>
+       <strong>
+        0
+       </strong>
+      </div>
+     </article>
+     <article class="stat">
+      <div class="stat-icon">
+       ◷
+      </div>
+      <div>
+       <span>
+        Em an&aacute;lise
+       </span>
+       <strong>
+        0
+       </strong>
+      </div>
+     </article>
+     <article class="stat">
+      <div class="stat-icon">
+       🚛
+      </div>
+      <div>
+       <span>
+        Com ve&iacute;culo
+       </span>
+       <strong>
+        0
+       </strong>
+      </div>
+     </article>
+    </section>
+    <section class="table-panel">
+     <div class="filters">
+      <input id="q" placeholder="Buscar por nome, CPF, telefone ou cidade..."/>
+      <select id="status">
+       <option value="all">
+        Todos os status
+       </option>
+       <option>
+        Ativo
+       </option>
+       <option>
+        Inativo
+       </option>
+       <option>
+        Em an&aacute;lise
+       </option>
+      </select>
+     </div>
+     <div class="table-wrap">
+      <table>
+       <thead>
+        <tr>
+         <th>
+          Nome
+         </th>
+         <th>
+          CPF/CNPJ
+         </th>
+         <th>
+          Telefone
+         </th>
+         <th>
+          Cidade
+         </th>
+         <th>
+          Status
+         </th>
+         <th>
+          A&ccedil;&otilde;es
+         </th>
+        </tr>
+       </thead>
+       <tbody id="rows">
+        <tr class="empty-row">
+         <td colspan="6" style="text-align:center;padding:30px">
+          Nenhum coletor cadastrado.
+         </td>
+        </tr>
+       </tbody>
+      </table>
+     </div>
+     <div class="pagination">
+      <span id="count">
+       Mostrando 0 coletores
+      </span>
+      <span>
+       Dados fict&iacute;cios para prot&oacute;tipo
+      </span>
+     </div>
+    </section>
+    <p class="notice">
+     Os dados s&atilde;o exemplos. Cadastro e edi&ccedil;&atilde;o permanentes precisam ser conectados ao backend.
+    </p>
+   </main>
+  </div>
+  <script>
+   function filt(){let n=0;document.querySelectorAll('#rows tr:not(.empty-row)').forEach(r=>{let ok=r.innerText.toLowerCase().includes(document.getElementById('q').value.toLowerCase())&&(document.getElementById('status').value==='all'||r.innerText.includes(document.getElementById('status').value));r.hidden=!ok;if(ok)n++});document.getElementById('count').textContent='Mostrando '+n+' coletor(es)';}document.getElementById('q').addEventListener('input',filt);document.getElementById('status').addEventListener('change',filt);document.getElementById('new').onclick=()=>alert('Protótipo visual: o formulário de novo coletor será integrado ao backend.');document.querySelectorAll('.edit').forEach(b=>b.onclick=()=>alert('Protótipo visual: edição ainda não está conectada ao banco de dados.'));
+  </script>
+</body>
+</html>
