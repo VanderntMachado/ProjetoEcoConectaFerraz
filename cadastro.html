@@ -10,11 +10,20 @@
 <body class="auth-page">
 
   <header class="topbar">
-    <a href="index.html" class="logo">
-      <span class="logo-mark">🍃</span>
-      <span>Eco-Conecta <small>Ferraz</small></span>
-    </a>
-    <a class="btn btn-outline btn-small" href="index.html">← Voltar para o início</a>
+   <a class="logo" href="index.html">
+    <span class="logo-mark">
+     🍃
+    </span>
+    <span>
+     Eco-Conecta
+     <small>
+      Ferraz
+     </small>
+    </span>
+   </a>
+   <a class="btn btn-outline btn-small" href="index.html">
+    &larr; Voltar para o in&iacute;cio
+   </a>
   </header>
     <section class="register-section" id="cadastro">
       <div class="section-heading">
@@ -90,16 +99,66 @@
           </form>
         </article>
       </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="logo">
-      <span class="logo-mark">🍃</span>
-      <span>Eco-Conecta <small>Ferraz</small></span>
+      <form>
+       <label for="coletor-nome">
+        Nome completo
+       </label>
+       <input id="coletor-nome" placeholder="Digite seu nome completo" type="text"/>
+       <label for="coletor-cpf">
+        CPF / CNPJ
+       </label>
+       <input id="coletor-cpf" placeholder="000.000.000-00" type="text"/>
+       <label for="coletor-tel">
+        Telefone
+       </label>
+       <input id="coletor-tel" placeholder="(11) 99999-9999" type="tel"/>
+       <label for="veiculo">
+        Ve&iacute;culo
+       </label>
+       <select id="veiculo">
+        <option value="">
+         Selecione o tipo
+        </option>
+        <option>
+         Caminh&atilde;o
+        </option>
+        <option>
+         Caminhonete
+        </option>
+        <option>
+         Utilit&aacute;rio
+        </option>
+        <option>
+         Outro
+        </option>
+       </select>
+       <label for="placa">
+        Placa
+       </label>
+       <input id="placa" placeholder="ABC-1D23" type="text"/>
+       <button class="btn btn-primary full" type="submit">
+        Pr&oacute;ximo &rarr;
+       </button>
+      </form>
+     </article>
     </div>
-    <span>Projeto Integrador — Gestão de Resíduos Volumosos</span>
+   </section>
+  </main>
+  <footer>
+   <div class="logo">
+    <span class="logo-mark">
+     🍃
+    </span>
+    <span>
+     Eco-Conecta
+     <small>
+      Ferraz
+     </small>
+    </span>
+   </div>
+   <span>
+    Projeto Integrador &mdash; Gest&atilde;o de Res&iacute;duos Volumosos
+   </span>
   </footer>
 </body>
 </html>
